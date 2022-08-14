@@ -1,0 +1,47 @@
+@use '../utility/variables' as v;
+@use '../utility/functions' as f;
+
+.hero {
+    background-color: v.$color-3;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    &__container {
+        color: white;
+    }
+    &__img,
+    &__title {
+        display: block;
+    }
+    &__img {
+        width: 80%;
+        max-width: f.em(400);
+        margin: 0 auto;
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+        float: none;
+    }
+    &__title,
+    &__statement  {
+        text-align: center;
+    }
+
+    &__statement {
+        font-size: f.rem(16);
+        line-height: 1.2;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            top: f.em(-15);
+            // left: f.em(32);
+            // right: f.em(32);
+            left: 7vw;
+            right: 7vw;
+            height: 2px;
+            background: white;
+            z-index: 12;
+        }
+    }
+    
+}

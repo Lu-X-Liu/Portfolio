@@ -1,0 +1,10 @@
+@use 'functions' as f;
+
+$breakpoints-up: (
+    'small': f.em(576),
+    'medium': f.em(768),
+    'large': f.em(992),
+    'xlarge': f.em(1200),
+    'xxlarge': f.em(1400),
+);
+

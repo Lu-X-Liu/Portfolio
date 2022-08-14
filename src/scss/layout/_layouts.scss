@@ -1,0 +1,10 @@
+.header-nav {
+    position: fixed;
+    width: 100vw;
+}
+
+#container {
+    @media (max-width: 576px) {
+        max-width: 90vw;
+    }
+}
