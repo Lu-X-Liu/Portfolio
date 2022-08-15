@@ -3,6 +3,8 @@
 
 .hero {
     background-color: v.$color-3;
+    background-image: linear-gradient(v.$color-3, v.$color-3),url("../../../src/img/hero-bg.png");
+    background-size: 70%;
     padding-top: 6rem;
     padding-bottom: 6rem;
     &__container {
@@ -24,10 +26,11 @@
     &__title,
     &__statement  {
         text-align: center;
+        //background-color: v.$color-3;
     }
 
     &__statement {
-        font-size: f.rem(16);
+        font-size: f.rem(18);
         line-height: 1.2;
         position: relative;
         &::before {
