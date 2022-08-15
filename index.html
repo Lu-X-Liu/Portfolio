@@ -10,7 +10,7 @@
     <link rel="shortcut icon" type="image/png" href="src/img/self-portrait-square.png">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark header-nav">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container" id="container">
             <a href="index.html" class="navbar-brand">Xiao Lu Liu</a> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,27 +19,80 @@
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="#about" class="nav-link">about</a>
+                        <a href="#about" class="nav-link">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#projects" class="nav-link">projects</a>
+                        <a href="#frontend" class="nav-link">Frontend</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#contact" class="nav-link">contact</a>
+                        <a href="#design" class="nav-link">Design</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
                     </li>
                 </ul>
             </div>           
         </div>
-
-
     </nav>
     <section class="hero">
         <div class="container d-flex flex-column align-itmes-center hero__container">
             <img src="src/img/Fishmonkey-8bit.png" alt="fishmonkey character design " class="hero__img mb-5">
             <h1 class="hero__title p-3 mb-0">Frontend Developer, Designer & Illustrator</h1>
-            <p class="hero__statement font-weight-light p-3 ">
-                I play with ideas and forms in images and in code, & I deliver value.
+            <p class="hero__statement font-weight-light p-3 lead">
+                I play with ideas in images and code, & I deliver value.
             </p>
+        </div>
+    </section>
+
+<!-- Frontend Portfolio -->
+    <section class="pt-5 pb-5 bg-dark" id="frontend">
+        <div class="container">
+            <h2 class="text-light text-center pb-3">Frontend Portfolio</h2>
+            <div class="row text-center g-4">
+                <div class="col-md">
+                    <div class="card mt-4 card__border mx-auto" style="width: 18rem;">
+                        <img src="src/img/web/lu-art.jpg" class="card-img-top rounded-top" alt="Xiao Lu Liu Art website">
+                        <div class="card-body rounded-bottom card__body">
+                          <h5 class="card-title">Xiao Lu Liu Art</h5>
+                          <p class="card-text">Website display works of artist Xiao Lu Liu.</p>
+                          <a href="https://lu-x-liu.github.io/lu-art/" target="_blank" class="card-link" >Go to Site</a>
+                          <a href="https://github.com/Lu-X-Liu/lu-art" target="_blank" class="card-link" >View Source Code</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-md">                    
+                    <div class="card mt-4 card__border mx-auto" style="width: 18rem;">
+                        <img src="src/img/web/ez-list.jpg" class="card-img-top rounded-top" alt="EA-List Web App">
+                        <div class="card-body rounded-bottom card__body">
+                          <h5 class="card-title">EZ-List</h5>
+                          <p class="card-text">A web app to creat categorized and uncategorized lists.</p>
+                          <a href="https://lu-x-liu.github.io/ez-list" target="_blank" class="card-link" >Go to Site</a>
+                          <a href="https://github.com/Lu-X-Liu/ez-list" target="_blank" class="card-link" >View Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">                    
+                    <div class="card mt-4 card__border mx-auto" style="width: 18rem;">
+                        <img src="src/img/web/audio-captain.jpg" class="card-img-top rounded-top" alt="Audio-Captain landing page">
+                        <div class="card-body rounded-bottom card__body">
+                          <h5 class="card-title">Audio Captain</h5>
+                          <p class="card-text">A landing page for a made-up company Audio Captain.</p>
+                          <a href="https://lu-x-liu.github.io/audio-captain" target="_blank" class="card-link" >Go to Site</a>
+                          <a href="https://github.com/Lu-X-Liu/audio-captain" target="_blank" class="card-link" >View Source Code</a>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md">                    
+                    <div class="card mt-4 card__border mx-auto" style="width: 18rem;">
+                        <img src="src/img/web/portfolio.jpg" class="card-img-top rounded-top" alt="this portfolio site">
+                        <div class="card-body rounded-bottom card__body">
+                          <h5 class="card-title">Portfolio</h5>
+                          <p class="card-text">View source code of this portfolio site.</p>
+                          <a href="https://github.com/Lu-X-Liu/Portfolio" target="_blank" class="card-link" >View Source Code</a>
+                        </div>
+                    </div>
+                </div>                   
+            </div>
         </div>
     </section>
 

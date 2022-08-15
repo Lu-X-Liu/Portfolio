@@ -1,14 +1,24 @@
 @use '../utility/variables' as v;
 @use '../utility/mixins' as m;
 
-.header-nav {
-    position: fixed;
-    width: 100vw;
-    z-index: 50;
-}
 
 #container {
     @include m.breakpoint-down(small) {
         max-width: 90vw;
+    }
+}
+
+.card {
+    &__body {
+        background-color: v.$color-5;
+    }
+
+    &__link {
+        color: v.$color-4;
+    }
+
+    &__border {
+        border: 2px solid v.$color-5;
+        border-radius: 6px;
     }
 }
