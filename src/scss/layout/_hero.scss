@@ -5,7 +5,7 @@
     background-color: v.$color-3;
     background-image: linear-gradient(v.$color-3, v.$color-3),url("../../../src/img/hero-bg.png");
     background-size: 70%;
-    padding-top: 6rem;
+    padding-top: calc(6rem + 40px);
     padding-bottom: 6rem;
     &__container {
         color: white;
@@ -26,7 +26,7 @@
     &__title,
     &__statement  {
         text-align: center;
-        //background-color: v.$color-3;
+        background-color: v.$color-3;
     }
 
     &__statement {
@@ -36,7 +36,7 @@
         &::before {
             content: "";
             position: absolute;
-            top: f.em(-15);
+            top: 0;
             // left: f.em(32);
             // right: f.em(32);
             left: 7vw;

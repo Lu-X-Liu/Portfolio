@@ -1,6 +1,6 @@
 @use 'functions' as f;
 
-$breakpoints-up: (
+$breakpoints: (
     'small': f.em(576),
     'medium': f.em(768),
     'large': f.em(992),

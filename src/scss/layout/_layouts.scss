@@ -1,12 +1,14 @@
 @use '../utility/variables' as v;
+@use '../utility/mixins' as m;
 
 .header-nav {
     position: fixed;
     width: 100vw;
+    z-index: 50;
 }
 
 #container {
-    @media (max-width: 576px) {
+    @include m.breakpoint-down(small) {
         max-width: 90vw;
     }
 }
