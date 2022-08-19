@@ -1,5 +1,6 @@
 @use '../utility/variables' as v;
 @use '../utility/mixins' as m;
+@use '../utility/functions' as f;
 
 
 #container {
@@ -23,3 +24,14 @@
     }
 }
 
+.illustration {
+    &__btn {
+        background-color: v.$color-5;
+    }
+}
+
+.footer{
+    &__logo {
+        width: f.rem(80);
+    }
+}
