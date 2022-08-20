@@ -2,10 +2,11 @@
 @use '../utility/mixins' as m;
 @use '../utility/functions' as f;
 
-.nav__btn {
-    border: none;
+.nav{
+    &__btn {
+        border: none;
+    }
 }
-
 #container {
     @include m.breakpoint-down(small) {
         max-width: 90vw;
@@ -60,5 +61,12 @@
         @include m.breakpoint(medium) {
             padding-inline: 1.7rem;
         }
+    }
+}
+
+.modal {
+
+    &__img {
+        max-width: 100%;
     }
 }
