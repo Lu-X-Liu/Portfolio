@@ -2,6 +2,9 @@
 @use '../utility/mixins' as m;
 @use '../utility/functions' as f;
 
+.nav__btn {
+    border: none;
+}
 
 #container {
     @include m.breakpoint-down(small) {
