@@ -24,6 +24,12 @@
     }
 }
 
+.about {
+    &__text {
+        max-width: f.em(500);
+    }
+}
+
 .illustration {
     &__btn {
         background-color: v.$color-5;
@@ -33,5 +39,17 @@
 .footer{
     &__logo {
         width: f.rem(80);
+    }
+    &__link {
+        display: inline-block;
+        padding-inline: 1rem;
+
+        &:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        @include m.breakpoint(medium) {
+            padding-inline: 1.7rem;
+        }
     }
 }

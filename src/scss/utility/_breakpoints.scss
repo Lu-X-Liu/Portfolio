@@ -8,3 +8,10 @@ $breakpoints: (
     'xxlarge': f.em(1400),
 );
 
+$breakpoints-down: (
+    'small': f.em(575.98),
+    'medium': f.em(767.98),
+    'large': f.em(991.98),
+    'xlarge': f.em(1199.98),
+    'xxlarge': f.em(1399.98),
+)
