@@ -34,13 +34,16 @@
     }
 }
 
-// .design {
-//     &__btn {
-//         background-color: v.$color-4;
-//     }
-// }
+.design {
+    & img {
+        cursor: pointer;
+    }
+}
 
 .illustration {
+    & img {
+        cursor: pointer;
+    }
     &__btn {
         background-color: v.$color-5;
     }
@@ -66,7 +69,19 @@
 
 .modal {
 
+    &__landscape {
+        @include m.breakpoint(medium) {
+            max-width: f.em(650);
+        }
+        @include m.breakpoint(xlarge) {
+            max-width: f.em(750);
+        }
+    }
+
     &__img {
         max-width: 100%;
+    }
+    &__max-width {
+        max-width: 270px;
     }
 }
