@@ -38,8 +38,9 @@ const portrait = new Map([
 ]);
 
 const landscape =new Map([
-    ['small', 500],
-    ['large', 1000]
+    ['small', 375],
+    ['medium', 750]
+    // ['large', 1000]
 ])
 
 allImgs['portrait'] = portrait;
@@ -65,13 +66,20 @@ function renameDesignImgs() {
 }
 
 function renameIllustrationImgs() {
-    return src(srcIllustration + 'landscape/*.{jpg,png}')
+    return src(srcIllustration + '**/*.{jpg,png}')
     .pipe(rename(function (path) {
-        path.basename += '_xlarge'; 
+        path.basename += '_large'; 
     }))
-    .pipe(dest(distIllustration + 'xlarge/'));
+    .pipe(dest(distIllustration + 'large/'));
 }
 
+function renameImgs() {
+    return src(distIllustration + 'xlarge/*.{jpg,png}')
+        .pipe(rename(function (path) {
+            path.basename = path.basename.replace('_xlarge', '_large');
+        }))
+        .pipe(dest(distIllustration + 'large/'));
+}
 
 function resizeDesignImgs(cb) {
     for (const item in allImgs) {
@@ -99,7 +107,7 @@ function resizeIllustrationImgs(cb) {
     for (const item in allImgs) {
         if (item === 'portrait'){
             allImgs[item].forEach((size, key) => {
-                src(srcIllustration + '*.{jpg,png}', {since: lastRun(resizeIllustrationImgs)})
+                src(srcIllustration + '*.{jpg,png}')
                 .pipe(        
                     imgResize({
                     width: size,
@@ -112,9 +120,10 @@ function resizeIllustrationImgs(cb) {
                 .pipe(dest(distIllustration + key + '/' ))
                 .pipe(browserSync.stream());
             }) 
-        } else if (item === 'landscape') {
+        } else 
+        if (item === 'landscape') {
             allImgs[item].forEach((size, key) => {
-                src(srcIllustration + 'landscape/*.{jpg,png}', {since: lastRun(resizeIllustrationImgs)})
+                src(srcIllustration + 'landscape/*.{jpg,png}')
                 .pipe(        
                     imgResize({
                     width: size,
@@ -133,7 +142,7 @@ function resizeIllustrationImgs(cb) {
 }
 
 //optimize all images
-const imgSizes = ['small', 'large', 'xlarge'];
+const imgSizes = ['small', 'large', 'medium'];
 
 function optimizeDesignImgs(cb) {
     imgSizes.forEach((size) => {
@@ -158,6 +167,25 @@ function optimizeIllustrationImgs(cb) {
         .pipe(dest(distIllustration + size + '/'))
         .pipe(browserSync.stream());       
     })
+    cb();
+}
+//potimize single img 
+function optimizeSingleImg(cb) {  
+    src(distIllustration+ 'large' + '/scrach-board-putin_large.png', {since: lastRun(optimizeSingleImg)})
+    .pipe(imagemin([
+    imagemin.mozjpeg({quality:60, progressive: true}),
+    imagemin.optipng({optimizationLevel: 7}),
+    ]))
+    .pipe(        
+        imgResize({
+        width: 500,
+        noProfile: true,
+        flatten: true
+    }))
+    .pipe(rename(function (path) {
+        path.basename = path.basename.replace('_large', '_small');
+    }))
+    .pipe(dest(distIllustration + 'small' + '/'));      
     cb();
 }
 
@@ -224,3 +252,7 @@ exports.rI = resizeIllustrationImgs;
 exports.oI = optimizeIllustrationImgs;
 
 exports.oW = webpIllustrationImgs;
+
+exports.RI = renameImgs;
+
+exports.s = optimizeSingleImg;

@@ -37,12 +37,14 @@
 .design {
     & img {
         cursor: pointer;
+        max-width: 360px;
     }
 }
 
 .illustration {
     & img {
         cursor: pointer;
+        max-width: 375px;
     }
     &__btn {
         background-color: v.$color-5;
