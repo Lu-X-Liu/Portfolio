@@ -40,7 +40,6 @@ const portrait = new Map([
 const landscape =new Map([
     ['small', 375],
     ['medium', 750]
-    // ['large', 1000]
 ])
 
 allImgs['portrait'] = portrait;
@@ -142,7 +141,7 @@ function resizeIllustrationImgs(cb) {
 }
 
 //optimize all images
-const imgSizes = ['small', 'large', 'medium'];
+const imgSizes = ['small', 'medium', 'large'];
 
 function optimizeDesignImgs(cb) {
     imgSizes.forEach((size) => {

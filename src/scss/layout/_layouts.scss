@@ -35,16 +35,21 @@
 }
 
 .design {
+    & picture {
+        max-width: 360px;
+    }
     & img {
         cursor: pointer;
-        max-width: 360px;
     }
 }
 
 .illustration {
+    & picture {
+        max-width: 375px;
+    }
     & img {
         cursor: pointer;
-        max-width: 375px;
+        
     }
     &__btn {
         background-color: v.$color-5;
