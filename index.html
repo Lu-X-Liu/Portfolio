@@ -131,8 +131,30 @@
                     Logo Design
                 </h5>
                 <div class="row g-4 mt-0 mb-3">
-                    <img src="src/img/design/xll-serif.png" alt="Xiao Lu Liu logo serif" class="img-thumbnail col-8 mx-auto col-md-5 col-lg-3 p-2 border-0" data-bs-toggle="modal" data-bs-target="#imgDisplay">
-                    <img src="src/img/design/xll_sense.png" alt="Xiao Lu Liu logo sense serif" class="img-thumbnail col-8 mx-auto col-md-5 col-lg-3 p-2 border-0" data-bs-toggle="modal" data-bs-target="#imgDisplay">
+                    <picture class="col-8 mx-auto col-md-5 col-lg-3 p-0">
+                        <source type="image/webp" 
+                                srcset="dist/img/design/webp/small/xll-serif_small.webp 500w,
+                                        dist/img/design/webp/large/xll-serif_large.webp 1000w"
+                                sizes="(min-sidth: 768px) 500px,
+                                        360px">
+                        <img    srcset="dist/img/design/small/xll-serif_small.png 500w,
+                                        dist/img/design/large/xll-serif_large.png 1000w"
+                                sizes="(min-sidth: 768px) 500px,
+                                        360px"
+                                src="dist/img/design/small/xll-serif_small.png" alt="Xiao Lu Liu logo serif" class="img-thumbnail border-0 p-2" data-bs-toggle="modal" data-bs-target="#imgDisplay">
+                    </picture>
+                    <picture class="col-8 mx-auto col-md-5 col-lg-3 p-0">
+                        <source type="image/webp" 
+                                srcset="dist/img/design/webp/small/xll_sense_small.webp 500w,
+                                        dist/img/design/webp/large/xll_sense_large.webp 1000w"
+                                sizes="(min-sidth: 768px) 500px,
+                                        360px">
+                        <img    srcset="dist/img/design/small/xll_sense_small.png 500w,
+                                        dist/img/design/large/xll_sense_large.png 1000w"
+                                sizes="(min-sidth: 768px) 500px,
+                                        360px"       
+                                src="dist/img/design/small/xll_sense_small.png" alt="Xiao Lu Liu logo sense serif" class="img-thumbnail border-0 p-2" data-bs-toggle="modal" data-bs-target="#imgDisplay">
+                    </picture>
                     <img src="src/img/design/ac_logo.png" alt="Audio Captain logo" class="img-thumbnail col-8 mx-auto col-md-5 col-lg-3 p-2 border-0" data-bs-toggle="modal" data-bs-target="#imgDisplay">
                     <img src="src/img/design/hoptopus-logo.png" alt="Hoptopus Brewing Logo" class="img-thumbnail col-8 mx-auto col-md-5 col-lg-3 p-2 border-0" data-bs-toggle="modal" data-bs-target="#imgDisplay">
                 </div>
@@ -250,7 +272,8 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body d-flex flex-column align-items-center">
-            <img src="src/img/design/ui-4.png" alt="" class="modal__img modal__max-width">
+            <img srcset="" sizes=""
+                 src="src/img/design/ui-4.png" alt="" class="modal__img modal__max-width">
             <!-- modal__max-width -->
             <p class="modal__text pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo dolor tenetur.</p>
             </div>

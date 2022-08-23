@@ -34,61 +34,155 @@ function js() {
 const allImgs = {};
 
 const portrait = new Map([
-    ['small', 500],
-    ['medium', 750],
-    ['large', 1000]
+    ['small', 500]
 ]);
 
 const landscape =new Map([
     ['small', 500],
-    ['medium', 750],
-    ['large', 1000],
-    ['xlarge', 1300],
-    ['xxlarge', 1500]   
+    ['large', 1000]
 ])
 
 allImgs['portrait'] = portrait;
 allImgs['landscape'] = landscape;
 
-const srcDesign = 'src/imgs/design/';
-const distDesign = 'dist/imgs/design/';  
+const srcDesign = 'src/img/design/';
+const distDesign = 'dist/img/design/';  
 
-const srcIllustration = 'src/imgs/illustration/';
-const distIllustration = 'dist/imgs/illustration/';
+const srcIllustration = 'src/img/illustration/';
+const distIllustration = 'dist/img/illustration/';
 
-function resizeAllImgs(srcDirPath, distDirPath, cb) {
+function test(cb) {
+    console.log(allImgs);
+    cb();
+}
+
+function renameDesignImgs() {
+    return src(srcDesign + '*.{jpg,png}')
+    .pipe(rename(function (path) {
+        path.basename += '_large'; 
+    }))
+    .pipe(dest(distDesign + 'large/'));
+}
+
+function renameIllustrationImgs() {
+    return src(srcIllustration + 'landscape/*.{jpg,png}')
+    .pipe(rename(function (path) {
+        path.basename += '_xlarge'; 
+    }))
+    .pipe(dest(distIllustration + 'xlarge/'));
+}
+
+
+function resizeDesignImgs(cb) {
     for (const item in allImgs) {
-        allImgs[item].forEach((size, key) => {
-            src(srcDirPath + '*.jpg', {since: lastRun(resizeDisplayImgs)})
-            .pipe(        
-                imgResize({
-                width: size
-            }))
-            .pipe(rename(function (path) {
-                path.basename += '_' + key;
-            }))
-            .pipe(dest(distDirPath + key + '/' ))
-            .pipe(browserSync.stream());
-        }) 
+        if (item === 'portrait'){
+            allImgs[item].forEach((size, key) => {
+                src(srcDesign + '*.{jpg,png}', {since: lastRun(optimizeDesignImgs)})
+                .pipe(        
+                    imgResize({
+                    width: size,
+                    noProfile: true,
+                    flatten: true
+                }))
+                .pipe(rename(function (path) {
+                    path.basename += '_' + key;
+                }))
+                .pipe(dest(distDesign + key + '/' ))
+                .pipe(browserSync.stream());
+            }) 
+        }
+    }               
+    cb();
+}
+
+function resizeIllustrationImgs(cb) {
+    for (const item in allImgs) {
+        if (item === 'portrait'){
+            allImgs[item].forEach((size, key) => {
+                src(srcIllustration + '*.{jpg,png}', {since: lastRun(resizeIllustrationImgs)})
+                .pipe(        
+                    imgResize({
+                    width: size,
+                    noProfile: true,
+                    flatten: true
+                }))
+                .pipe(rename(function (path) {
+                    path.basename += '_' + key;
+                }))
+                .pipe(dest(distIllustration + key + '/' ))
+                .pipe(browserSync.stream());
+            }) 
+        } else if (item === 'landscape') {
+            allImgs[item].forEach((size, key) => {
+                src(srcIllustration + 'landscape/*.{jpg,png}', {since: lastRun(resizeIllustrationImgs)})
+                .pipe(        
+                    imgResize({
+                    width: size,
+                    noProfile: true,
+                    flatten: true
+                }))
+                .pipe(rename(function (path) {
+                    path.basename += '_' + key;
+                }))
+                .pipe(dest(distIllustration + key + '/' ))
+                .pipe(browserSync.stream());
+            })           
+        }
     }               
     cb();
 }
 
 //optimize all images
-const imgSizes = ['small', 'medium', 'large', 'xlarge', 'xxlarge'];
+const imgSizes = ['small', 'large', 'xlarge'];
 
-function optimizeAllImgs( distDirPath, cb) {
+function optimizeDesignImgs(cb) {
     imgSizes.forEach((size) => {
-        src(distDirPath + size + '/*.jpg', {since: lastRun(optimizeDisplayImgs)})
+        src(distDesign+ size + '/*.{jpg,png}', {since: lastRun(optimizeDesignImgs)})
         .pipe(imagemin([
         imagemin.mozjpeg({quality:75, progressive: true}),
-        imagemin.optipng({optimizationLevel: 3}),
+        imagemin.optipng({optimizationLevel: 5}),
         ]))
-        .pipe(dest(distDirPath + size + '/'))
+        .pipe(dest(distDesign + size + '/'))
         .pipe(browserSync.stream());       
     })
     cb();
 }
+
+function optimizeIllustrationImgs(cb) {
+    imgSizes.forEach((size) => {
+        src(distIllustration+ size + '/*.{jpg,png}', {since: lastRun(optimizeIllustrationImgs)})
+        .pipe(imagemin([
+        imagemin.mozjpeg({quality:75, progressive: true}),
+        imagemin.optipng({optimizationLevel: 5}),
+        ]))
+        .pipe(dest(distIllustration + size + '/'))
+        .pipe(browserSync.stream());       
+    })
+    cb();
+}
+
+//create webp for display images
+
+function webpDesignImgs(cb) {
+    imgSizes.forEach((size) => {
+    src(distDesign + size + '/*.{jpg,png}')
+    .pipe(webp())
+    .pipe(dest(distDesign + 'webp/' + size + '/'))
+    .pipe(browserSync.stream());          
+    }) 
+    cb();      
+}
+
+function webpIllustrationImgs(cb) {
+    imgSizes.forEach((size) => {
+    src(distIllustration + size + '/*.{jpg,png}')
+    .pipe(webp())
+    .pipe(dest(distIllustration + 'webp/' + size + '/'))
+    .pipe(browserSync.stream());          
+    }) 
+    cb();      
+}
+
 
 //watch tasks
 function watchTasks() {
@@ -109,4 +203,24 @@ exports.default = series(
     
 );
 
-exports.w = watchTasks;
+exports.watch = watchTasks;
+
+exports.re = renameDesignImgs;
+
+exports.r = resizeDesignImgs;
+
+exports.o = optimizeDesignImgs;
+
+exports.w = webpDesignImgs;
+
+exports.t = test;
+
+//illustration function exports
+
+exports.reI = renameIllustrationImgs;
+
+exports.rI = resizeIllustrationImgs;
+
+exports.oI = optimizeIllustrationImgs;
+
+exports.oW = webpIllustrationImgs;
