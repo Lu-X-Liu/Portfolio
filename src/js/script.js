@@ -9,10 +9,17 @@ const illustrationBtnContainer =  document.querySelector('.illustration__btn-con
 const moreIllustrationCard = document.querySelector('#moreIllustration .card');
 const illustrationBtn = document.querySelector('.illustration__btn');
 
-//sleect navbar dropdown elements
+//select navbar dropdown elements
 const navLinks = document.querySelectorAll('.nav__link');
 const navDropDown = document.querySelector('.nav__drop-down');
 const navBtn = document.querySelector('.nav__btn');
+
+//select thumbnail images and modal image
+const thumbImgs = document.querySelectorAll('.img-thumbnail');
+const modalImg = document.querySelector('.modal__img');
+const modalSource = document.querySelector('.modal__source');
+const modalDialog = document.querySelector('.modal-dialog');
+const modalClose = document.querySelector('.modal__close');
 
 //hide navbar dropdown after selecting a nav link
 navLinks.forEach(link => {
@@ -49,3 +56,37 @@ designBtn.addEventListener('click', () => {
 illustrationBtn.addEventListener('click', () => {
     moveToggleBtn(illustrationBtn, illustrationBtnContainer, lessIllustration, moreIllustrationCard);
 });
+
+//set modal image
+
+thumbImgs.forEach(img => {
+    img.addEventListener('click', ()=> {
+        setModalImg(img);
+    })    
+})
+
+modalClose.addEventListener('click', ()=> unsetModalImg());
+
+function setModalImg(img) {
+    if (img.dataset.src) {
+        modalDialog.classList.add('modal__landscape');
+        modalImg.parentElement.classList.add('modal__max-width');
+        modalSource.srcset = img.dataset.webp;
+        modalImg.srcset = img.dataset.srcset;
+        modalImg.src = img.dataset.src;        
+    } else {
+        modalSource.srcset = img.dataset.srcset;
+        modalImg.srcset = img.srcset;
+        modalImg.src = img.src;
+    }
+    modalImg.alt = img.alt;
+};
+
+function unsetModalImg () {
+    modalDialog.classList.remove('modal__landscape');
+    modalImg.parentElement.classList.remove('modal__max-width');
+    modalSource.srcset = '';
+    modalImg.srcset = '';
+    modalImg.src = ''; 
+    modalImg.alt = ''; 
+}
