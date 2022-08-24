@@ -20,6 +20,8 @@ const modalImg = document.querySelector('.modal__img');
 const modalSource = document.querySelector('.modal__source');
 const modalDialog = document.querySelector('.modal-dialog');
 const modalClose = document.querySelector('.modal__close');
+const modalTitle = document.querySelector('.modal-title');
+const modalText = document.querySelector('.modal__text');
 
 //hide navbar dropdown after selecting a nav link
 navLinks.forEach(link => {
@@ -68,6 +70,8 @@ thumbImgs.forEach(img => {
 modalClose.addEventListener('click', ()=> unsetModalImg());
 
 function setModalImg(img) {
+        modalTitle.textContent = img.dataset.title;
+        modalText.textContent = img.dataset.text;
     if (img.dataset.src) {
         modalDialog.classList.add('modal__landscape');
         modalImg.parentElement.classList.add('modal__max-width');
@@ -89,4 +93,6 @@ function unsetModalImg () {
     modalImg.srcset = '';
     modalImg.src = ''; 
     modalImg.alt = ''; 
+    modalTitle.textContent = '';
+    modalText.textContent = '';
 }
