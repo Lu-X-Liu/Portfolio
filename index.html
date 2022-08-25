@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <title>Xiao Lu Liu Portfolio</title>
     <link rel="stylesheet" href="dist/css/style.css">
-    <link rel="shortcut icon" type="image/png" href="src/img/self-portrait-square.png">
+    <link rel="shortcut icon" type="image/png" href="dist/img/icon/xll-fav-icon.png">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -41,7 +41,7 @@
     </nav>
     <section class="hero">
         <div class="container d-flex flex-column align-itmes-center hero__container">
-            <img src="src/img/Fishmonkey-8bit.png" alt="fishmonkey character design " class="hero__img mb-5">
+            <img src="dist/img/hero/Fishmonkey-8bit.png" alt="fishmonkey character design " class="hero__img mb-5">
             <h1 class="hero__title p-3 mb-0">Frontend Developer, Designer & Illustrator</h1>
             <p class="hero__statement font-weight-light p-3 lead">
                 I play with ideas in images and code, & I deliver value.
@@ -54,7 +54,7 @@
         <div class="container">
             <h2 class="about__title text-center pb-3">Hi, I am Lu. Nice to meet you!</h2>
             <div class="row d-flex justify-content-center align-itmes-center px-3">
-                <img src="src/img/self-portrait-square.png" alt="Xiao Lu Liu portrait" class="about__img px-0 pt-4 col-8 col-md-5 col-lg-3 align-self-start">
+                <img src="dist/img/hero/self-portrait-square.png" alt="Xiao Lu Liu portrait" class="about__img px-0 pt-4 col-8 col-md-5 col-lg-3 align-self-start">
                 <p class="about__text col-md-6 px-5 pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ea excepturi, natus ipsa incidunt vero hic nostrum laboriosam assumenda libero. Ipsa itaque facere voluptatibus sed dolorum alias quos, reiciendis tenetur nihil hic sit. Atque, neque! Numquam obcaecati nesciunt assumenda unde corrupti! Vel ipsam, accusantium praesentium atque ullam perspiciatis modi nostrum!</p>
             </div>
         </div>
@@ -68,7 +68,9 @@
                 <div class="col-md-5 col-xxl-3 frontend__card-wrapper">
                     <div class="card mt-4 card__border mx-auto" style="width: 17rem;">
                         <a href="https://lu-x-liu.github.io/lu-art/" target="_blank">
-                            <img src="src/img/web/lu-art.jpg" class="card-img-top rounded-top" alt="Xiao Lu Liu Art website">
+                            <img srcset="dist/img/web/lu-art_275.jpg 1x,
+                                         dist/img/web/lu-art_550.jpg 2x"
+                                 src="dist/img/web/lu-art_275.jpg" class="card-img-top rounded-top" alt="Xiao Lu Liu Art website">
                         </a>
                         <div class="card-body rounded-bottom card__body">
                           <h5 class="card-title">Xiao Lu Liu Art</h5>
@@ -81,7 +83,9 @@
                 <div class="col-md-5 col-xxl-3 frontend__card-wrapper">                    
                     <div class="card mt-4 card__border mx-auto" style="width: 17rem;">
                         <a href="https://lu-x-liu.github.io/ez-list" target="_blank">
-                            <img src="src/img/web/ez-list.jpg" class="card-img-top rounded-top" alt="EA-List Web App">
+                            <img srcset="dist/img/web/ez-list_275.jpg 1x,
+                                         dist/img/web/ez-list_550.jpg 2x"
+                                 src="dist/img/web/ez-list_275.jpg" class="card-img-top rounded-top" alt="EA-List Web App">
                         </a>
                         <div class="card-body rounded-bottom card__body">
                           <h5 class="card-title">EZ-List</h5>
@@ -94,7 +98,9 @@
                 <div class="col-md-5 col-xxl-3 frontend__card-wrapper">                    
                     <div class="card mt-4 card__border mx-auto" style="width: 17rem;">
                         <a href="https://lu-x-liu.github.io/audio-captain" target="_blank">
-                            <img src="src/img/web/audio-captain.jpg" class="card-img-top rounded-top" alt="Audio-Captain landing page">
+                            <img srcset="dist/img/web/audio-captain_275.jpg 1x,
+                                         dist/img/web/audio-captain_550.jpg 2x"
+                                 src="dist/img/web/audio-captain_275.jpg" class="card-img-top rounded-top" alt="Audio-Captain landing page">
                         </a>
                         <div class="card-body rounded-bottom card__body">
                           <h5 class="card-title">Audio Captain</h5>
@@ -107,7 +113,9 @@
                 <div class="col-md-5 col-xxl-3 frontend__card-wrapper">                    
                     <div class="card mt-4 card__border mx-auto" style="width: 17rem;">
                         <a href="https://github.com/Lu-X-Liu/Portfolio" target="_blank">
-                            <img src="src/img/web/portfolio.jpg" class="card-img-top rounded-top" alt="this portfolio site">
+                            <img srcset="dist/img/web/portfolio_275.jpg 1x,
+                                         dist/img/web/portfolio_550.jpg 2x"
+                                 src="dist/img/web/portfolio_275.jpg" class="card-img-top rounded-top" alt="this portfolio site">
                         </a>
                         <div class="card-body rounded-bottom card__body">
                           <h5 class="card-title">Portfolio</h5>
@@ -188,7 +196,7 @@
             </div>
             <div class="collapse" id="moreDesign">
                 <div class="card card-body border-0">
-                    <h5 class="design__subtitle pb-2 text-center text-secondary">
+                    <h5 class="design__subtitle mb-0 text-center text-secondary">
                         Business Card Design
                     </h5>
                     <div class="row g-4 justify-content-center mt-0 mb-3">
@@ -240,7 +248,7 @@
                                     data-title="Ohana restaurant business card (back)">
                         </picture>
                     </div>
-                    <h5 class="design__subtitle pb-2 text-center text-secondary">
+                    <h5 class="design__subtitle pt-2 mb-0 text-center text-secondary">
                         UI Design
                     </h5>
                     <div class="row g-4 justify-content-center mt-0 mb-3">
@@ -525,7 +533,7 @@
     <footer class="bg-dark text-light py-5 footer">
         <div class="container">
             <div class="d-flex flex-column g-4 align-items-center mt-0 mb-5">
-                <img src="src/icon/xll-sens-sm-w.png" alt="Xiao Lu Liu dev logo" class="footer__logo">
+                <img src="dist/img/icon/xll-sens-sm-w.png" alt="Xiao Lu Liu dev logo" class="footer__logo">
                 <div class="footer__copy-right py-3">© Xiao Lu Liu - All rights reserved</div>
                 <div class="mt-2 d-flex justify-content-center">
                     <a class="h2 text-light footer__link" href="#">

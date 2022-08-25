@@ -4,17 +4,17 @@
 
 .hero {
     background-color: v.$color-3;
-    background-image: linear-gradient(v.$color-3, v.$color-3),url("../../../src/img/hero-bg-sm.png");
+    background-image: linear-gradient(v.$color-3, v.$color-3),url("../../../dist/img/hero/hero-bg-sm.png");
     background-size: 100%; 
     padding-top: calc(6rem + 40px);
     padding-bottom: 6rem;
 
     @include m.breakpoint(small) {
-        background-image: linear-gradient(v.$color-3, v.$color-3),url("../../../src/img/hero-bg-md.png");
+        background-image: linear-gradient(v.$color-3, v.$color-3),url("../../../dist/img/hero/hero-bg-md.png");
     }
 
     @include m.breakpoint(medium) {
-        background-image: linear-gradient(v.$color-3, v.$color-3),url("../../../src/img/hero-bg.png");
+        background-image: linear-gradient(v.$color-3, v.$color-3),url("../../../dist/img/hero/hero-bg.png");
     }
 
     @include m.breakpoint(xlarge) {

@@ -140,6 +140,27 @@ function resizeIllustrationImgs(cb) {
     cb();
 }
 
+// resize web imgs
+const iconImgsSizes = [80, 160]
+
+function resizeIconImgs(cb) {
+    iconImgsSizes.forEach (size => {
+        src('src/icon/'+ '*.{jpg,png}')
+        .pipe(        
+            imgResize({
+            width: size,
+            noProfile: true,
+            flatten: true
+        }))
+        .pipe(rename(function (path) {
+            path.basename += '_' + size;
+        }))
+        .pipe(dest('dist/img/icon/' ));           
+    })
+        
+    cb();
+}
+
 //optimize all images
 const imgSizes = ['small', 'medium', 'large'];
 
@@ -185,6 +206,17 @@ function optimizeSingleImg(cb) {
         path.basename = path.basename.replace('_large', '_small');
     }))
     .pipe(dest(distIllustration + 'small' + '/'));      
+    cb();
+}
+
+// optimize hero images
+function optimizeHeroImgs(cb) {    
+    src('dist/img/hero/' + '/*.{jpg,png}')
+    .pipe(imagemin([
+    imagemin.mozjpeg({quality:75, progressive: true}),
+    imagemin.optipng({optimizationLevel: 5}),
+    ]))
+    .pipe(dest('dist/img/hero/'));      
     cb();
 }
 
@@ -255,3 +287,7 @@ exports.oW = webpIllustrationImgs;
 exports.RI = renameImgs;
 
 exports.s = optimizeSingleImg;
+
+exports.oH = optimizeHeroImgs;
+
+exports.rii = resizeIconImgs;
